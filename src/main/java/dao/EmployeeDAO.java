@@ -20,4 +20,9 @@ public class EmployeeDAO {
     public List<Employee> getAllEmployees() {
         return em.createQuery("SELECT c FROM Employee c", Employee.class).getResultList();
     }
+
+    public void close() {
+        em.close();
+        emf.close();
+    }
 }
