@@ -20,8 +20,7 @@ public class Employee {
 
     public Employee() {}
 
-    public Employee(Long id, String name, String lastname, String birthday) {
-        this.id = id;
+    public Employee(String name, String lastname, String birthday) {
         this.name = name;
         this.lastname = lastname;
         this.birthday = birthday;
@@ -29,10 +28,6 @@ public class Employee {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
