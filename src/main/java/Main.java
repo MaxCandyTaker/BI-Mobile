@@ -1,21 +1,37 @@
 import dao.EmployeeDAO;
+import dao.FacilityDAO;
 import model.Employee;
+import model.Facility;
 
 public class Main {
     public static void main(String[] args) {
-        EmployeeDAO dao = new EmployeeDAO();
+        EmployeeDAO employeeDAO = new EmployeeDAO();
+        FacilityDAO facilityDAO = new FacilityDAO();
 
-        Employee employee = new Employee("Max", "Mustermann", "01.01.2000");
+        // Create a facility
+        Facility bielefeld = new Facility("Unter den Linden 1", "bielefeld@mail", 1234);
+        facilityDAO.addFacility(bielefeld);
 
-        dao.addEmployee(employee);
-        dao.addEmployee(new Employee("Marianne", "Musterfrau", "01.01.2000"));
+        // Create employees and assign them to the facility
+        Employee max = new Employee("Max", "Mustermann", "01.01.2000");
+        bielefeld.addEmployee(max);
 
-        dao.getAllEmployees().forEach(e ->
-                System.out.println(employee.getName() + " " + employee.getLastname() + " - " + employee.getBirthday())
+        Employee marianne = new Employee("Marianne", "Musterfrau", "01.01.2000");
+        bielefeld.addEmployee(marianne);
+
+        // Persist employees (Facility cascades should save them automatically)
+        facilityDAO.updateFacility(bielefeld);
+
+        // Fetch all employees and print their facility info
+        employeeDAO.getAllEmployees().forEach(e ->
+                System.out.println(
+                        e.getName() + " " + e.getLastname() + " - " + e.getBirthday() +
+                                " | Facility: " + (e.getFacility() != null ? e.getFacility().getAddress() : "None")
+                )
         );
 
-        dao.close();
+        // Close DAOs
+        employeeDAO.close();
+        facilityDAO.close();
     }
-
-
 }

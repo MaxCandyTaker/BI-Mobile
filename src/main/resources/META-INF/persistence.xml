@@ -1,6 +1,7 @@
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
     <persistence-unit name="carrentalPU">
         <class>com.carrental.model.Employee</class>
+        <class>com.carrental.model.Facility</class>
         <properties>
             <!-- H2 database connection -->
             <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:~/carrental;DB_CLOSE_DELAY=-1"/>
