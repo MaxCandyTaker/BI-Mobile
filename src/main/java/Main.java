@@ -8,6 +8,7 @@ public class Main {
         Employee employee = new Employee("Max", "Mustermann", "01.01.2000");
 
         dao.addEmployee(employee);
+        dao.addEmployee(new Employee("Marianne", "Musterfrau", "01.01.2000"));
 
         dao.getAllEmployees().forEach(e ->
                 System.out.println(employee.getName() + " " + employee.getLastname() + " - " + employee.getBirthday())
