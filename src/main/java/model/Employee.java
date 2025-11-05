@@ -18,6 +18,10 @@ public class Employee {
     @Column(nullable = false)
     private String birthday;
 
+    @ManyToOne
+    @JoinColumn(name = "facility_id")
+    private Facility facility;
+
     public Employee() {}
 
     public Employee(String name, String lastname, String birthday) {
@@ -34,10 +38,6 @@ public class Employee {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getLastname() {
         return lastname;
     }
@@ -50,7 +50,11 @@ public class Employee {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
+    public Facility getFacility() {
+        return facility;
+    }
+
+    public void setFacility(Facility facility) {
+        this.facility = facility;
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "facilites")
+@Table(name = "facilities")
 public class Facility {
 
     @Id
@@ -25,7 +25,8 @@ public class Facility {
     //@Column(nullable = false);
     //private Manager manager;
 
-    private List<Employee> employeeList;
+    @OneToMany(mappedBy = "facility", cascade = CascadeType.ALL)
+    private List<Employee> employees = new ArrayList<>();
 
     public Facility() {}
 
@@ -33,11 +34,11 @@ public class Facility {
         this.address = address;
         this.mail = mail;
         this.telephoneNr = telephoneNr;
-        this.employeeList = new ArrayList<>();
     }
 
-    public void addEmployee(Employee employee){
-        employeeList.add(employee);
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+        employee.setFacility(this);
     }
 
     public Long getId() {
