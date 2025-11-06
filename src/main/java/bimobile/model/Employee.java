@@ -1,4 +1,4 @@
-package model;
+package bimobile.model;
 import jakarta.persistence.*;
 
 @Entity

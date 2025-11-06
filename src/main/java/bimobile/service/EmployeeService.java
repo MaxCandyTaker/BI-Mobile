@@ -1,7 +1,7 @@
-package service;
+package bimobile.service;
 
-import dao.EmployeeDAO;
-import model.Employee;
+import bimobile.dao.EmployeeDAO;
+import bimobile.model.Employee;
 import java.util.List;
 
 public class EmployeeService {

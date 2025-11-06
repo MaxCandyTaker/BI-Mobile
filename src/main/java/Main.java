@@ -1,7 +1,7 @@
-import dao.EmployeeDAO;
-import dao.FacilityDAO;
-import model.Employee;
-import model.Facility;
+import bimobile.dao.EmployeeDAO;
+import bimobile.dao.FacilityDAO;
+import bimobile.model.Employee;
+import bimobile.model.Facility;
 
 public class Main {
     public static void main(String[] args) {

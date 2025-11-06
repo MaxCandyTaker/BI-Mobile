@@ -1,20 +1,26 @@
-package controller;
+package bimobile.controller;
 
-import model.Facility;
-import service.FacilityService;
-import dao.FacilityDAO;
+import bimobile.model.Facility;
+import bimobile.service.FacilityService;
+import bimobile.dao.FacilityDAO;
+import org.springframework.stereotype.Controller;
+import org.springframework.context.annotation.Conditional;
 
 import java.util.List;
-
+@Controller
 public class FacilityController {
 
     private FacilityService facilityService;
     private FacilityDAO facilityDAO;
-
+/*
     public FacilityController() {
         this.facilityService = new FacilityService();
         this.facilityDAO = new FacilityDAO();
     }
+*/
+	public FacilityController(FacilityService facilityService) {
+		this.facilityService = facilityService;
+	}
 
     public String standortAnlegen(String address, String mail, int telephoneNr) {
         if (address == null || address.trim().isEmpty()) {
@@ -170,4 +176,13 @@ public class FacilityController {
             return "Fehler: " + e.getMessage();
         }
     }
+	public List<Facility> getAllFacilities() {
+		try {
+			return facilityService.getAllFacilities();
+		} catch (Exception e) {
+			System.err.println("Fehler beim Abrufen der Standorte: " + e.getMessage());
+			return List.of(); // gibt eine leere Liste zurück statt null
+		}
+	}
+
 }

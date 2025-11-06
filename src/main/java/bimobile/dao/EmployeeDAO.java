@@ -1,31 +1,30 @@
-package dao;
+package bimobile.dao;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.NoResultException;
 import jakarta.persistence.Persistence;
-import model.Employee;
-import model.Facility;
+import bimobile.model.Employee;
 
 import java.util.List;
 
-public class FacilityDAO {
+public class EmployeeDAO {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("carrentalPU");
     private EntityManager em = emf.createEntityManager();
 
-    public void addFacility(Facility facility) {
+    public void addEmployee(Employee employee) {
         em.getTransaction().begin();
-        em.persist(facility); // Save to database
+        em.persist(employee); // Save to database
         em.getTransaction().commit();
     }
 
-    public List<Facility> getAllFacilities() {
-        return em.createQuery("SELECT c FROM Facility c", Facility.class).getResultList();
+    public List<Employee> getAllEmployees() {
+        return em.createQuery("SELECT c FROM Employee c", Employee.class).getResultList();
     }
 
-    public Facility getFacilityById(Long id) {
+    public Employee getEmployeeById(Long id) {
         try {
-            return em.createQuery("SELECT f FROM Facility f WHERE f.id = :id", Facility.class)
+            return em.createQuery("SELECT e FROM Employee e WHERE e.id = :id", Employee.class)
                     .setParameter("id", id)
                     .getSingleResult();
         } catch (NoResultException e) {
@@ -38,9 +37,4 @@ public class FacilityDAO {
         emf.close();
     }
 
-    public void updateFacility(Facility facility) {
-        em.getTransaction().begin();
-        em.merge(facility); // merges changes into database
-        em.getTransaction().commit();
-    }
 }

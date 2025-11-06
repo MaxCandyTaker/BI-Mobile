@@ -1,8 +1,13 @@
-import controller.FacilityController;
+import bimobile.controller.FacilityController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
+import bimobile.Application;
+
 
 public class StandortAnlegenTest {
     public static void main(String[] args) {
-        FacilityController controller = new FacilityController();
+	    ApplicationContext context = SpringApplication.run(Application.class, args);
+	    FacilityController controller = context.getBean(FacilityController.class);
 
         // Standort 1
         System.out.println(controller.standortAnlegen(
