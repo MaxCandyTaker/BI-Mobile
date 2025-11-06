@@ -13,9 +13,11 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.annotation.security.PermitAll;
 
 @Route(value = "standort-anlegen", layout = MainLayout.class)
 @PageTitle("Neuen Standort anlegen")
+@PermitAll
 public class StandortAnlegenView extends VerticalLayout {
 
 	private final FacilityController controller;
