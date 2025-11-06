@@ -57,6 +57,8 @@ public class Facility {
         this.mail = mail;
     }
 
+    public void setAddress(String address) { this.address = address; }
+
     public int getTelephoneNr() {
         return telephoneNr;
     }
