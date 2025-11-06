@@ -1,4 +1,7 @@
 import org.h2.tools.Server;
+import java.sql.Connection;
+import java.sql.DriverManager;  // <- FEHLT
+import java.sql.Statement;
 
 public class H2ConsoleStarter {
     public static void main(String[] args) throws Exception {
