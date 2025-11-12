@@ -36,13 +36,13 @@ public class StandortUebersichtView extends VerticalLayout {
 	public StandortUebersichtView(FacilityController controller) {
 		this.controller = controller;
 
-		// ===== Layout-Grundstruktur =====
+		//Layout-Grundstruktur
 		setPadding(true);
 		setSizeFull();
 		getStyle().set("background", "#f9fafb");
 		getStyle().set("min-height", "100vh");
 
-		// ===== Kopfzeile =====
+
 		H2 title = new H2("Standortübersicht");
 
 		// Button, der den Anlegen-Dialog öffnet (statt neue View)
@@ -55,13 +55,13 @@ public class StandortUebersichtView extends VerticalLayout {
 		header.setAlignItems(Alignment.CENTER);
 		header.setJustifyContentMode(JustifyContentMode.BETWEEN);
 
-		// ===== Grid für Standorte =====
+		//Standorte Grid
 		grid.addColumn(Facility::getId).setHeader("ID").setAutoWidth(true);
 		grid.addColumn(Facility::getAddress).setHeader("Adresse").setAutoWidth(true);
 		grid.addColumn(Facility::getMail).setHeader("E-Mail").setAutoWidth(true);
 		grid.addColumn(Facility::getTelephoneNr).setHeader("Telefon").setAutoWidth(true);
 
-		// Aktionsspalte mit Bearbeiten / Löschen
+		//Bearbeiten / Löschen
 		grid.addComponentColumn(facility -> {
 			Button bearbeiten = new Button(new Icon(VaadinIcon.EDIT));
 			bearbeiten.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
@@ -86,7 +86,7 @@ public class StandortUebersichtView extends VerticalLayout {
 		grid.setItems(facilities);
 	}
 
-	// ======= NEU: Standort anlegen als Dialog =======
+	//Standort anlegen als Dialog
 	private void openCreateDialog() {
 		Dialog dialog = new Dialog();
 		dialog.setWidth("500px");
@@ -99,7 +99,7 @@ public class StandortUebersichtView extends VerticalLayout {
 		EmailField email = new EmailField("E-Mail");
 		TextField phone = new TextField("Telefonnummer");
 
-		// Speichern-Button mit Validierung
+		//Speichern-Button
 		Button save = new Button("Speichern", e -> {
 			try {
 				if (address.isEmpty() || email.isEmpty() || phone.isEmpty()) {
@@ -134,7 +134,7 @@ public class StandortUebersichtView extends VerticalLayout {
 		dialog.open();
 	}
 
-	// ======= Bearbeiten eines Standorts =======
+	//Bearbeiten eines Standorts
 	private void openEditDialog(Facility facility) {
 		Dialog dialog = new Dialog();
 		dialog.setWidth("500px");
@@ -180,7 +180,7 @@ public class StandortUebersichtView extends VerticalLayout {
 		dialog.open();
 	}
 
-	// ======= Löschen eines Standorts =======
+	//Löschen eines Standorts
 	private void openDeleteDialog(Facility facility) {
 		Dialog dialog = new Dialog();
 		dialog.setWidth("400px");
